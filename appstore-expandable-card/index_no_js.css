@@ -1,0 +1,116 @@
+:root {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  --body-width: 100vw;
+  --card-width: 87.5vw;
+  --card-height: 60vw;
+  --img-height-expanded: 320px;
+  --ratio: calc(100 / 87.5);
+
+  background-color: #333;
+}
+
+body {
+  background-color: #eee;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+body.noscroll {
+  overflow: hidden;
+}
+
+.card {
+  flex-direction: column;
+  width: var(--card-width);
+  height: var(--card-height);
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 .2rem 2rem rgba(0, 0, 0, .1);
+  margin: 1rem 0;
+  transition: .3s all ease-in;
+}
+
+.card img {
+  display: block;
+  height: 50vw;
+  width: 100%;
+  object-fit: cover;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  transition: .3s all ease-in;
+}
+
+.card h4 {
+  box-sizing: border-box;
+  height: 10vw;
+  margin: 0;
+  font-size: 5vw;
+  line-height: 8vw;
+  font-weight: bold;
+  padding: 1vw 4vw;
+  letter-spacing: -.5px;
+  transition: .3s all ease-in;
+}
+
+.card .content-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: .3s all ease-out;
+  opacity: .8;
+}
+
+.card .content-wrapper .content {
+  padding: 0 4vw;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.card p {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.card p:first-child {
+  margin-top: 0;
+}
+
+/*
+active classes below
+*/
+.card.active {
+  transform: translateY(var(--data-offset-top)) scale(var(--ratio));
+  transform-origin: 50% 0;
+  border-radius: 0;
+  height: calc(100vh / var(--ratio));
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.active h4 {
+  padding-bottom: .8rem;
+}
+
+.card.active img {
+  flex: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: calc(var(--card-width) * 9 / 16);
+}
+
+.card.active .content-wrapper {
+  height: 100vh;
+  transition: .3s all ease-in;
+  opacity: 1;
+  flex: 1;
+  overflow: auto;
+}
+
